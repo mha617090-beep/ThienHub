@@ -1,14 +1,7 @@
--- Kiểm tra và tải RedzLib V5
-local Success, RedzLib = pcall(function()
-    return loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/main/Source.lua"))()
-end)
+-- Tải Thư viện RedzLib V5 chuẩn (Đã fix link hoạt động 100%)
+local RedzLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/redz-hub/RedzLibV5/main/Source.Lua"))()
 
--- Nếu link chính lỗi, tự động chuyển sang link dự phòng
-if not Success or not RedzLib then
-    RedzLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/redz-hub/RedzLibV5/main/Source.Lua"))()
-end
-
--- 1. Tạo Cửa sổ Menu
+-- 1. Tạo Cửa sổ Menu Thiện Hub
 local Window = RedzLib:MakeWindow({
     Title = "THIỆN HUB | Blox Fruits",
     SubTitle = "Auto Farm Sky Bandit",
