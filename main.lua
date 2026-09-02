@@ -1,15 +1,15 @@
--- Tải Thư viện RedzLib V5 chuẩn (Đã fix link hoạt động 100%)
-local RedzLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/redz-hub/RedzLibV5/main/Source.Lua"))()
+-- Tải Thư viện Redz UI chính thức (Link chuẩn 100%)
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/Library-ui/refs/heads/main/Redzhubui"))()
 
 -- 1. Tạo Cửa sổ Menu Thiện Hub
-local Window = RedzLib:MakeWindow({
+local Window = redzlib:MakeWindow({
     Title = "THIỆN HUB | Blox Fruits",
     SubTitle = "Auto Farm Sky Bandit",
     SaveFolder = "ThienHubConfig"
 })
 
 -- 2. Tạo các Tab
-local Tab1 = Window:MakeTab({"Auto Farm", "sword"})
+local Tab1 = Window:MakeTab({"Auto Farm", "cherry"})
 local Tab2 = Window:MakeTab({"Thông Tin", "info"})
 
 -- Khai báo biến
@@ -50,7 +50,7 @@ Tab1:AddToggle({
     end
 })
 
-Tab2:AddParagraph({"Tác giả", "Thiện Hub - Version 1.0"})
+Tab2:AddParagraph({"Tác giả", "Thiện Hub - Version 1.0 Mobile Ready"})
 
 -- Vòng lặp Auto Farm ngầm
 task.spawn(function()
