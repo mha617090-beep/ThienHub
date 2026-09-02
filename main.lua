@@ -1,4 +1,4 @@
--- Tải Thư viện Redz UI chính thức (Link chuẩn 100%)
+-- Tải Thư viện UI Redz chuẩn mượt cho Mobile
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/Library-ui/refs/heads/main/Redzhubui"))()
 
 -- 1. Tạo Cửa sổ Menu Thiện Hub
@@ -37,7 +37,7 @@ local function SmoothFlyTo(targetCFrame)
     end
 end
 
--- 3. Nút Bật/Tắt Auto Farm
+-- 3. Nút Bật/Tắt Auto Farm Redz
 Tab1:AddToggle({
     Name = "Auto Farm Sky Bandit",
     Description = "Tự nhận Quest và đấm quái mượt mà",
@@ -50,9 +50,9 @@ Tab1:AddToggle({
     end
 })
 
-Tab2:AddParagraph({"Tác giả", "Thiện Hub - Version 1.0 Mobile Ready"})
+Tab2:AddParagraph({"Tác giả", "Thiện Hub - Version 1.0 Mobile"})
 
--- Vòng lặp Auto Farm ngầm
+-- Vòng lặp Auto Farm
 task.spawn(function()
     while task.wait(0.01) do
         if _G.AutoFarm then
