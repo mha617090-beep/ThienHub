@@ -1,14 +1,21 @@
--- 1. Tải Thư viện Giao diện RedzLib V5
-local RedzLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))()
+-- Kiểm tra và tải RedzLib V5
+local Success, RedzLib = pcall(function()
+    return loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/main/Source.lua"))()
+end)
 
--- 2. Tạo Cửa sổ Menu
+-- Nếu link chính lỗi, tự động chuyển sang link dự phòng
+if not Success or not RedzLib then
+    RedzLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/redz-hub/RedzLibV5/main/Source.Lua"))()
+end
+
+-- 1. Tạo Cửa sổ Menu
 local Window = RedzLib:MakeWindow({
     Title = "THIỆN HUB | Blox Fruits",
     SubTitle = "Auto Farm Sky Bandit",
     SaveFolder = "ThienHubConfig"
 })
 
--- 3. Tạo các Tab
+-- 2. Tạo các Tab
 local Tab1 = Window:MakeTab({"Auto Farm", "sword"})
 local Tab2 = Window:MakeTab({"Thông Tin", "info"})
 
@@ -37,10 +44,10 @@ local function SmoothFlyTo(targetCFrame)
     end
 end
 
--- 4. Thêm Nút Bật/Tắt Auto Farm vào Menu Redz
+-- 3. Nút Bật/Tắt Auto Farm
 Tab1:AddToggle({
     Name = "Auto Farm Sky Bandit",
-    Description = "Tự nhận Quest, bay đến áp sát và đấm mượt 100%",
+    Description = "Tự nhận Quest và đấm quái mượt mà",
     Default = false,
     Callback = function(Value)
         _G.AutoFarm = Value
@@ -50,12 +57,7 @@ Tab1:AddToggle({
     end
 })
 
--- Nút hiển thị thông tin tác giả
-Tab2:AddDiscord({
-    Name = "Thiện Hub Community",
-    Logo = "rbxassetid://6031071833",
-    Invite = "ThienHub"
-})
+Tab2:AddParagraph({"Tác giả", "Thiện Hub - Version 1.0"})
 
 -- Vòng lặp Auto Farm ngầm
 task.spawn(function()
@@ -89,7 +91,7 @@ task.spawn(function()
                     end
                 end
 
-                -- Tìm quái gần nhất
+                -- Tìm quái
                 local target = nil
                 local minDist = math.huge
                 for _, mob in pairs(workspace.Enemies:GetChildren()) do
@@ -111,7 +113,6 @@ task.spawn(function()
                         if flyTween then flyTween:Cancel() end
                         root.CFrame = attackPos
                         
-                        -- Chém
                         local t = char:FindFirstChildOfClass("Tool")
                         if t then t:Activate() end
                         VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, 1)
